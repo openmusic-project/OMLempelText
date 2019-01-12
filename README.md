@@ -1,5 +1,5 @@
 # OMLempelText
 
-Applies LZ principles (cf. LZ library) with texts and textfiles.
+Applies LZ principles (see [LZ library](https://github.com/openmusic-project/LZ)) with texts and textfiles.
 
 Gérard Assayag, 2001
