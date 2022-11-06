@@ -51,7 +51,7 @@
 (print "
 ;;;=============================================
 ;;; OMLempelText 1.1
-;;; LZ engine for yexyfiles in OM
+;;; LZ engine for textfiles in OM
 ;;; Augemnted and revised by K. Haddad
 ;;;=============================================
 ")
