@@ -46,5 +46,14 @@
 ;--------------------------------------------------
 (om::fill-library *subpackages-list*)
 
+(om::set-lib-release 1.1)
+
+(print "
+;;;=============================================
+;;; OMLempelText 1.1
+;;; LZ engine for yexyfiles in OM
+;;; Augemnted and revised by K. Haddad
+;;;=============================================
+")
 
 

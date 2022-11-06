@@ -16,10 +16,6 @@
 (in-package :om)
 
 
-;;; mf-info gives : (midi-number, onset-time(ms), duration(ms), velocity, channel)
-
-
-
 
 ;;; UTILITIES
 
@@ -30,7 +26,7 @@
     for index from 0 to (1- (length distribution))
     for cumul = (nth 0 distribution) then (+ cumul (nth index distribution))
     while (< cumul seuil)
-    finally return index ))
+    finally (return index) ))
 
 
 (defun inverse-distribution (distribution)
@@ -104,7 +100,7 @@
 
 (defmethod! string->ascii ((text t))
 
-   :initvals '(toto)
+   :initvals '("toto")
    :indoc '("A Textfile" )
    :icon '(141) 
    :doc  "Translates strings into equivalent ascii integers"
@@ -117,8 +113,8 @@
 
 
 (defmethod! ascii->string ((asciilist list))
-   :initvals '(112)
-   :indoc '("ascii numbers" )
+   :initvals '( '(112))
+   :indoc '("list of ascii numbers" )
    :icon '(141) 
    :doc  "Translates ascii integers into equivalent strings"
   (let ((aString (make-string  (length asciilist))))
@@ -199,9 +195,9 @@ very unfrequent in the original text.
          then (cons (loop for prefix on (reverse (first-n result MaxPast))
                           for continuation  = (LZtextGenerate1 dict prefix mostprobable)
                           while (null continuation)
-                          finally return (or continuation (LZtextGenerate1 dict T mostprobable)))
+                          finally (return (or continuation (LZtextGenerate1 dict T mostprobable))))
                     result)
-         finally return (nreverse result)))
+         finally (return (nreverse result))))
 
 
 
@@ -271,7 +267,7 @@ very unfrequent in the original text.
                                                     (list (LZtextGenerate1 (nth 1 ldict)
                                                                            prefix mostprobable pioche 1) (length prefix)))
                            while (or (null (car continuation1)) (null (car continuation2)))
-                           finally return
+                           finally (return
                            (progn 
                              ;(if (or (null (car continuation1)) (null (car continuation2)))
                              ;(print (list current-dict continuation1 continuation2)))
@@ -307,9 +303,9 @@ very unfrequent in the original text.
                                                 (if (or (>= (cadr continuation1) taille-contexte)
                                                         (and (>= (cadr continuation1) (max (- taille-contexte 1) 1)) 
                                                              (equal (car (last prefix)) 32))) 0 1) 1)))
-                                      (if (equal current-dict 0) (car continuation1) (car continuation2)))))))
+                                      (if (equal current-dict 0) (car continuation1) (car continuation2))))))))
                      result)
-          finally return (progn (setq *mot-en-cours* nil) (nreverse result)))))
+          finally (return (progn (setq *mot-en-cours* nil) (nreverse result))))))
 
 (defun mettre-parenthese (list)
   ;change les chiffres 32 en parenthèses
